@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Tables</title>
+    <script src="js/lib/angular.min.js"></script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        
+        table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+
+<body ng-app="mainApp" ng-controller="studentController">
+
+    <div>
+        <h3>AngularJS - Tables</h3>
+        <p>Table data is normally repeatable by nature. ng-repeat directive can be used to draw table easily. Following example states the use of ng-repeat directive to draw a table.</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Marks</th>
+        </tr>
+
+        <tr ng-repeat="subject in student.subjects">
+            <td>{{ subject.name }}</td>
+            <td>{{ subject.marks }}</td>
+        </tr>
+    </table>
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', function($scope) {
+            $scope.student = {
+                firstName: "Mahesh",
+                lastName: "Parashar",
+                fees: 500,
+
+                subjects: [{
+                    name: 'Physics',
+                    marks: 70
+                }, {
+                    name: 'Chemistry',
+                    marks: 80
+                }, {
+                    name: 'Math',
+                    marks: 65
+                }, {
+                    name: 'English',
+                    marks: 75
+                }, {
+                    name: 'Hindi',
+                    marks: 67
+                }],
+
+                fullName: function() {
+                    var studentObject;
+                    studentObject = $scope.student;
+                    return studentObject.firstName + " " + studentObject.lastName;
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>

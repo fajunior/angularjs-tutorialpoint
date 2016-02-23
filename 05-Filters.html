@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Filters</title>
+    <script src="js/lib/angular.min.js"></script>
+</head>
+
+<body ng-app="mainApp" ng-controller="studentController">
+
+    <div>
+        <h3>AngularJS - Filters</h3>
+        <p>Filters are used to change modify the data and can be clubbed in expression or directives using pipe character. Following is the list of commonly used filters.</p>
+    </div>
+
+    <table border="1">
+        <tbody>
+            <tr>
+                <th>Sr.No.</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>uppercase</td>
+                <td>converts a text to upper case text.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>lowercase</td>
+                <td>converts a text to lower case text.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>currency</td>
+                <td>formats text in a currency format.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>filter</td>
+                <td>filter the array to a subset of it based on provided criteria.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>orderby</td>
+                <td>orders the array based on provided criteria.</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h2>AngularJS Sample Application</h2>
+    <div ng-controller="studentController">
+        <table border="0">
+            <tr>
+                <td>Enter first name:</td>
+                <td>
+                    <input type="text" ng-model="student.firstName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Enter last name: </td>
+                <td>
+                    <input type="text" ng-model="student.lastName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Enter fees: </td>
+                <td>
+                    <input type="text" ng-model="student.fees">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Enter subject: </td>
+                <td>
+                    <input type="text" ng-model="subjectName">
+                </td>
+            </tr>
+        </table>
+        <br/>
+
+        <table border="0">
+            <tr>
+                <td>Name in Upper Case: </td>
+                <td>{{student.fullName() | uppercase}}</td>
+            </tr>
+
+            <tr>
+                <td>Name in Lower Case: </td>
+                <td>{{student.fullName() | lowercase}}</td>
+            </tr>
+
+            <tr>
+                <td>fees: </td>
+                <td>{{student.fees | currency}}
+                </td>
+            </tr>
+
+            <tr>
+                <td>Subject:</td>
+
+                <td>
+                    <ul>
+                        <li ng-repeat="subject in student.subjects | filter: subjectName |orderBy:'marks'">
+                            {{ subject.name + ', marks:' + subject.marks }}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', function($scope) {
+            $scope.student = {
+                firstName: "Mahesh",
+                lastName: "Parashar",
+                //fees: 500,
+
+                subjects: [{
+                    name: 'Physics',
+                    marks: 70
+                }, {
+                    name: 'Chemistry',
+                    marks: 80
+                }, {
+                    name: 'Math',
+                    marks: 65
+                }],
+
+                fullName: function() {
+                    var studentObject;
+                    studentObject = $scope.student;
+                    return studentObject.firstName + " " + studentObject.lastName;
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>

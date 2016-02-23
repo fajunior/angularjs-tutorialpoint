@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>New HMTL document by NewJect</title>
+    <script src="js/lib/angular.min.js"></script>
+
+</head>
+
+<body ng-app="mainApp">
+
+    <div>
+        <h3>AngularJS - Controllers</h3>
+        <p>AngularJS application mainly relies on controllers to control the flow of data in the application. A controller is defined using ng-controller directive. A controller is a JavaScript object containing attributes/properties and functions. Each controller accepts $scope as a parameter which refers to the application/module that controller is to control.</p>
+    </div>
+
+    <h3>Example</h3>
+    <div ng-controller="studentController">
+        Enter first name:
+        <input type="text" ng-model="student.firstName">
+        <br>
+        <br> Enter last name:
+        <input type="text" ng-model="student.lastName">
+        <br>
+        <br> You are entering: {{student.fullName()}}
+        <br /> First name: {{ student.firstName }}
+        <br /> Last name: {{ student.lastName }}
+    </div>
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', function($scope) {
+            $scope.student = {
+                firstName: "Mahesh",
+                lastName: "Parashar",
+
+                fullName: function() {
+                    var studentObject;
+                    studentObject = $scope.student;
+                    return studentObject.firstName + " " + studentObject.lastName;
+                }
+            };
+        });
+
+    </script>
+</body>
+
+</html>

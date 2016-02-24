@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Includes</title>
+    <script src="js/lib/angular.min.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body ng-app="">
+
+    <div>
+        <h3>AngularJS - Includes</h3>
+        <p>HTML does not support embedding html pages within html page. To achieve this functionality following ways are used -</p>
+        <ul>
+            <li><b>Using Ajax - </b>Make a server call to get the corresponding html page and set it in innerHTML of html control.</li>
+            <li><b>Using Server Side Includes - </b>JSP, PHP and other web side server technologies can include html pages within a dynamic page.</li>
+        </ul>
+        <span ng-include="'subpage/1001-ng-include.html'"></span>
+    </div>
+
+</body>
+
+</html>

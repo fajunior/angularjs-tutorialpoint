@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Modules</title>
+    <script src="js/lib/angular.min.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <h3>AngularJS - Modules</h3>
+        <p>AngularJS supports modular approach. Modules are used to separate logics say services, controllers, application etc. and keep the code clean. We define modules in separate js files and name them as per the module.js file. In this example we're going to create two modules.</p>
+    </div>
+
+    <p><b>Application Module − </b>used to initialize an application with controller(s). </p>
+    <p><b>Controller Module − </b>used to define the controller.</p>
+
+    <div>
+        <h3>Application Module</h3>
+        <p><i>mainApp.js</i></p>
+
+        <p>var mainApp = angular.module("mainApp", []); </p>
+
+        <p>Here we've declared an application mainApp module using angular.module function. We've passed an empty array to it. This array generally contains dependent modules.</p>
+    </div>
+
+    <div>
+        <h3>Controller Module</h3>
+
+        <p><i>studentController.js</i></p>
+        <pre>
+mainApp.controller("studentController", function($scope) {
+   $scope.student = {
+      firstName: "Mahesh",
+      lastName: "Parashar",
+      fees:500,
+      
+      subjects:[
+         {name:'Physics',marks:70},
+         {name:'Chemistry',marks:80},
+         {name:'Math',marks:65},
+         {name:'English',marks:75},
+         {name:'Hindi',marks:67}
+      ],
+      
+      fullName: function() {
+         var studentObject;
+         studentObject = $scope.student;
+         return studentObject.firstName + " " + studentObject.lastName;
+      }
+   };
+});
+</pre>
+        <p>Here we've declared a controller studentController module using mainApp.controller function.</p>
+        <div>
+            <h3>Use Modules</h3>
+            <!--
+            <pre>
+            <div ng-app="mainApp" ng-controller="studentController">
+                ...
+                <script src="mainApp.js"></script>
+                <script src="studentController.js"></script>
+
+            </div>
+</pre> -->
+            <p>Here we've used application module using ng-app directive and controller using ng-controller directive. We've imported mainApp.js and studentController.js in the main html page.</p>
+        </div>
+
+    </div>
+
+    <div ng-app="mainApp" ng-controller="studentController">
+
+        <table border="0">
+            <tr>
+                <td>Enter first name:</td>
+                <td>
+                    <input type="text" ng-model="student.firstName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Enter last name: </td>
+                <td>
+                    <input type="text" ng-model="student.lastName">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Name: </td>
+                <td>{{student.fullName()}}</td>
+            </tr>
+
+            <tr>
+                <td>Subject:</td>
+                <td>
+
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Marks</th>
+                        </tr>
+
+                        <tr ng-repeat="subject in student.subjects">
+                            <td>{{ subject.name }}</td>
+                            <td>{{ subject.marks }}</td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <!-- Modules -->
+    <script src="js/mainApp.js"></script>
+
+    <!-- Controllers -->
+    <script src="js/controller/studentController.js"></script>
+</body>
+
+</html>

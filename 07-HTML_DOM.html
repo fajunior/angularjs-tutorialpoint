@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - HTML DOM</title>
+    <script src="js/lib/angular.min.js"></script>
+</head>
+
+<body ng-app="">
+
+    <div>
+        <h3>AngularJS - HTML DOM</h3>
+        <p>Following directives can be used to bind application data to attributes of HTML DOM Elements.</p>
+    </div>
+    <table>
+        <tbody>
+            <tr>
+                <th width="11%">Sr.No.</th>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>ng-disabled</td>
+                <td>disables a given control.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ng-show</td>
+                <td>shows a given control.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>ng-hide</td>
+                <td>hides a given control.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>ng-click</td>
+                <td>represents a AngularJS click event.</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <h3>ng-disabled directive</h3>
+    <p>Add ng-disabled attribute to a HTML button and pass it a model. Bind the model to an checkbox and see the variation.</p>
+    <input type="checkbox" ng-model="enableDisableButton">Disable Button
+    <button ng-disabled="enableDisableButton">Click Me!</button>
+
+    <h3>ng-show directive</h3>
+    <p>Add ng-show attribute to a HTML button and pass it a model. Bind the model to an checkbox and see the variation.</p>
+    <input type="checkbox" ng-model="showHide1">Show Button
+    <button ng-show="showHide1">Click Me!</button>
+
+    <h3>ng-hide directive</h3>
+    <p>Add ng-hide attribute to a HTML button and pass it a model. Bind the model to an checkbox and see the variation.</p>
+    <input type="checkbox" ng-model="showHide2">Hide Button
+    <button ng-hide="showHide2">Click Me!</button>
+
+
+    <h3>ng-click directive</h3>
+    <p>Add ng-click attribute to a HTML button and update a model. Bind the model to html and see the variation.</p>
+    <p>Total click: {{ clickCounter }}</p>
+    <button ng-click="clickCounter = clickCounter + 1">Click Me!</button>
+</body>
+
+</html>

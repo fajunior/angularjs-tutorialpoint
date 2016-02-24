@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Forms</title>
+    <script src="js/lib/angular.min.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body ng-app="mainApp" ng-controller="studentController">
+
+    <div>
+        <h3>AngularJS - Forms</h3>
+        <p>AngularJS enriches form filling and validation. We can use ng-click to handle AngularJS click on button and use $dirty and $invalid flags to do the validations in seemless way. Use novalidate with a form declaration to disable any browser specific validation. Forms controls makes heavy use of Angular events. Let's have a quick look on events first.</p>
+    </div>
+
+    <div>
+        <h3>Events</h3>
+        <p>AngularJS provides multiple events which can be associated with the HTML controls. For example ng-click is normally associated with button. Following are supported events in Angular JS.</p>
+
+        <ul>
+            <li>ng-click</li>
+            <li>ng-dbl-click</li>
+            <li>ng-mousedown</li>
+            <li>ng-mouseup</li>
+            <li>ng-mouseenter</li>
+            <li>ng-mouseleave</li>
+            <li>ng-mousemove</li>
+            <li>ng-mouseover</li>
+            <li>ng-keydown</li>
+            <li>ng-keyup</li>
+            <li>ng-keypress</li>
+            <li>ng-change</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>ng-click</h3>
+        <p>Reset data of a form using on-click directive of a button.</p>
+        <div ng-include="'subpage/0901-ng-click.html'"></div>
+    </div>
+
+    <div>
+        <h3>Validate data</h3>
+        <p>Following can be used to track error.</p>
+        <ul>
+            <li>$dirty - states that value has been changed.</li>
+            <li>$invalid - states that value entered is invalid.</li>
+            <li>$error - states the exact error.</li>
+
+        </ul>
+    </div>
+
+    <div>
+        <h3>Example:</h3>
+        <p>Following example will showcase all the above mentioned directives.</p>
+        <form name="studentForm" novalidate>
+            <table border="0">
+                <tr>
+                    <td>Enter first name:</td>
+                    <td>
+                        <input name="firstname" type="text" ng-model="firstName" required>
+                        <span style="color:red" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                        <span ng-show = "studentForm.firstname.$error.required">First Name is required.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Enter last name: </td>
+                    <td>
+                        <input name="lastname" type="text" ng-model="lastName" required>
+                        <span style="color:red" ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid">
+                        <span ng-show = "studentForm.lastname.$error.required">Last Name is required.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Email: </td>
+                    <td>
+                        <input name="email" type="email" ng-model="email" length="100" required>
+                        <span style="color:red" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
+                        <span ng-show = "studentForm.email.$error.required">Email is required.</span>
+                        <span ng-show="studentForm.email.$error.email">Invalid email address.</span>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button ng-click="reset()">Reset</button>
+                    </td>
+                    <td>
+                        <button ng-disabled="studentForm.firstname.$dirty &&
+                        studentForm.firstname.$invalid || studentForm.lastname.$dirty &&
+                        studentForm.lastname.$invalid || studentForm.email.$dirty &&
+                        studentForm.email.$invalid" ng-click="submit()">Submit</button>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+
+
+
+    <div>
+        <h3></h3>
+        <p></p>
+    </div>
+
+    <div>
+        <h3></h3>
+        <p></p>
+    </div>
+
+
+
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', function($scope) {
+            $scope.reset = function() {
+                $scope.firstName = "Mahesh";
+                $scope.lastName = "Parashar";
+                $scope.email = "MaheshParashar@tutorialspoint.com";
+            }
+
+            $scope.submit = function() {
+                alert("teste");
+            }
+
+            $scope.reset();
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>

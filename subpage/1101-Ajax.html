@@ -1,0 +1,7 @@
+<pre style="" class="prettyprint notranslate prettyprinted"><span class="kwd">function</span><span class="pln"> studentController</span><span class="pun">(</span><span class="pln">$scope</span><span class="pun">,</span><span class="pln">$http</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="str">"data.txt"</span><span class="pun">;</span><span class="pln">
+
+   $http</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">url</span><span class="pun">).</span><span class="pln">success</span><span class="pun">(</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">response</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      $scope</span><span class="pun">.</span><span class="pln">students </span><span class="pun">=</span><span class="pln"> response</span><span class="pun">;</span><span class="pln"> 
+   </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span></pre>

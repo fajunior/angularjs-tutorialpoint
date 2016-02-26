@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AngularJS - Ajax</title>
+    <script src="js/lib/angular.min.js"></script>
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+-->
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        
+        table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+
+<body ng-app="mainApp">
+
+    <div>
+        <h3>AngularJS - Ajax</h3>
+        <p>AngularJS provides $http control which works as a service to read data from the server. The server makes a database call to get the desired records. AngularJS needs data in JSON format. Once the data is ready, $http can be used to get the data from server in the following manner -</p>
+        <span ng-include="'subpage/1101-ajax.html'"></span>
+    </div>
+
+    <h3>AngularJS Sample Application</h3>
+    <div ng-controller="studentController">
+
+        <br>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Percentage</th>
+            </tr>
+
+            <tr ng-repeat="student in students">
+                <td>{{ student.Name }}</td>
+                <td>{{ student.RollNo }}</td>
+                <td>{{ student.Percentage }}</td>
+            </tr>
+        </table>
+        <br />
+        <button id="fetchbtn" ng-click="fetch()">Carregar Dados</button>
+    </div>
+
+    <script>
+        var app = angular.module('mainApp', []);
+
+        app.controller('studentController', ['$scope', '$http', '$templateCache',
+            function($scope, $http, $templateCache) {
+                $scope.method = 'GET';
+                $scope.url = 'txt/dados.txt';
+
+                $scope.fetch = function() {
+                    $scope.code = null;
+                    $scope.response = null;
+
+                    $http({
+                        method: $scope.method,
+                        url: $scope.url,
+                        cache: $templateCache
+                    }).
+                    then(function(response) {
+                        $scope.status = response.status;
+                        $scope.students = response.data;
+                    }, function(response) {
+                        $scope.data = response.data || "Request failed";
+                        $scope.status = response.status;
+                    });
+                };
+
+                $scope.updateModel = function(method, url) {
+                    $scope.method = method;
+                    $scope.url = url;
+                };
+            }
+        ]);
+
+    </script>
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+-->
+
+
+
+</body>
+
+</html>

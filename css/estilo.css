@@ -4040,7 +4040,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #121214;
+    color: black;
     font-weight: 200;
     letter-spacing: -1px;
     margin: 0
@@ -4077,7 +4077,7 @@ div.front .col-md-4:hover {
     opacity: .5
 }
 h4 {
-    color: #CCC;
+    color: black;
     font-size: 1.4em;
     font-weight: 400;
     letter-spacing: normal;

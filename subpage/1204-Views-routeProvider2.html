@@ -1,0 +1,18 @@
+<pre style="" class="prettyprint notranslate prettyprinted"><span class="kwd">var</span><span class="pln"> mainApp </span><span class="pun">=</span><span class="pln"> angular</span><span class="pun">.</span><span class="kwd">module</span><span class="pun">(</span><span class="str">"mainApp"</span><span class="pun">,</span><span class="pln"> </span><span class="pun">[</span><span class="str">'ngRoute'</span><span class="pun">]);</span><span class="pln">
+
+mainApp</span><span class="pun">.</span><span class="pln">config</span><span class="pun">([</span><span class="str">'$routeProvider'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">$routeProvider</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   $routeProvider</span><span class="pun">.</span><span class="pln">
+   
+   </span><span class="kwd">when</span><span class="pun">(</span><span class="str">'/addStudent'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      templateUrl</span><span class="pun">:</span><span class="pln"> </span><span class="str">'addStudent.htm'</span><span class="pun">,</span><span class="pln"> controller</span><span class="pun">:</span><span class="pln"> </span><span class="str">'AddStudentController'</span><span class="pln">
+   </span><span class="pun">}).</span><span class="pln">
+   
+   </span><span class="kwd">when</span><span class="pun">(</span><span class="str">'/viewStudents'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      templateUrl</span><span class="pun">:</span><span class="pln"> </span><span class="str">'viewStudents.htm'</span><span class="pun">,</span><span class="pln"> controller</span><span class="pun">:</span><span class="pln"> </span><span class="str">'ViewStudentsController'</span><span class="pln">
+   </span><span class="pun">}).</span><span class="pln">
+   
+   otherwise</span><span class="pun">({</span><span class="pln">
+      redirectTo</span><span class="pun">:</span><span class="pln"> </span><span class="str">'/addStudent'</span><span class="pln">
+   </span><span class="pun">});</span><span class="pln">
+	
+</span><span class="pun">}]);</span></pre>

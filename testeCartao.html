@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>New HMTL document by NewJect</title>
+    <script src="js/lib/angular.min.js"></script>
+
+</head>
+
+<body ng-app="app">
+
+    <div ng-controller="mainController">
+
+        <p>Enter your Name:
+            <input type="text" id="inputCartao" ng-model="name" ng-keyup="myFunct($event)">
+
+        </p>
+
+        <p>Hello <span ng-bind="name"></span>!</p>
+
+        <br/>
+        <button id="fetchbtn" ng-click="fetch()">Carregar Dados</button>
+        <h3>{{valido}}</h3>
+    </div>
+
+
+    <script>
+        var app = angular.module('app', [])
+        app.controller('mainController', function($scope) {
+            $scope.cc = {
+                numero: 0,
+                valida: function() {
+                    answer = 7 % 2;
+                    if (answer != 0) {
+                        document.write("answer = ", answer);
+                    }
+                }
+            };
+
+            $scope.fetch = function() {
+                var abc = document.getElementById("inputCartao");
+
+                if (abc.value.length % 2 == 0) {
+
+                    $scope.pCardNumber = abc.value;
+                    $scope.CharPos = abc.value.length;
+                    var CheckSum = 0;
+
+                    if (abc.value.length > 2) {
+
+                        console.log(abc.value.length);
+
+                        for (i = abc.value.length; i > 0; i--) {
+                            CheckSum = CheckSum + parseInt(parseInt(abc.value[i - 1]));
+                            CheckSum_old = CheckSum;
+
+                            tChar = parseInt(abc.value[i - 2]) * 2;
+
+                            if (tChar > 9) {
+                                CheckSum = CheckSum + 1 + tChar - 10;
+                            } else {
+                                CheckSum = CheckSum + tChar;
+                            }
+
+                            $scope.CheckSum = CheckSum;
+                            $scope.tChar = tChar;
+
+                            console.log("pos = " + i + " | CheckSum = " + CheckSum_old + " | tChar = " + tChar + " | CheckSum = " + CheckSum);
+
+
+                            i--;
+                            /*
+                                                        
+
+                            /*tChar = CStr((Mid(pCardNumber, CharPos - 1, 1)) * 2) CheckSum = CheckSum + CInt(Left(tChar, 1)) If Len(tChar) > 1 Then CheckSum = CheckSum + CInt(Right(tChar, 1))*/
+                        }
+
+                        if (CheckSum % 10 == 0) {
+                            $scope.valido = "cartão valido";
+                        } else {
+                            $scope.valido = "cartão NÃO valido";
+                        }
+                    }
+
+
+
+
+
+
+                    //$scope.teste = calc; //abc.value + "";
+                }
+                //console.log("inputCartao = " + abc.value);
+                /* alert(inputCartao.value);
+                 answer = 7 % 2;
+                 if (answer != 0) {
+                     document.write("answer = ", answer);
+                 }*/
+            };
+
+            $scope.myFunct = function(keyEvent) {
+
+            }
+
+
+
+        });
+
+    </script>
+</body>
+
+</html>

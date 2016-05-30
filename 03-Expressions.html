@@ -8,23 +8,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>New HMTL document by NewJect</title>
+    <title>AngularJS</title>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <script src="js/lib/angular.min.js"></script>
 </head>
 
-<body ng-app="" ng-init="quantity = 1;cost = 30; student = {firstname:'Mahesh',lastname:'Parashar',rollno:101};marks = [80,90,75,73,60]">
+<body ng-app="" ng-init="quantidade = 1;valor = 30; aluno = {primeiroNome:'Francisco',ultimoNome:'Júnior',codigo:101};notas = [80,90,75,73,60]">
 
     <div>
-        <h3>Expression</h3>
+        <h1>Expression</h1>
     </div>
-    <p>Expressions are used to bind application data to html. Expressions are written inside double braces like {{ expression}}. Expressions behaves in same way as ng-bind directives. AngularJS application expressions are pure javascript expressions and outputs the data where they are used.</p>
+    <ul>
+        <li><b>"Expressions"</b> são usadas para vincular os dados do aplicativo com o HTML</li>
+        <li><b>"Expressions"</b> são representadas por dois pares de chaves "{{ expression}}".</li>
+        <li>O comportamento é o mesmo que a diretiva <b>ng-bind</b></li>
+        <li><b>"Expressions"</b> em AngularJS nada mais são que expressões javascript que são processados e seus valores são impressos no html</li>
+    </ul>
+
     <br />
     <br />
     <div>
-        <p>Hello {{student.firstname + " " + student.lastname}}!</p>
-        <p>Expense on Books : {{cost * quantity}} Rs</p>
-        <p>Roll No: {{student.rollno}}</p>
-        <p>Marks(Math): {{marks[3]}}</p>
+        <p>Olá {{aluno.primeiroNome + " " + aluno.ultimoNome}}!</p>
+        <p>Gasto com livros : R$ {{valor * quantidade}}</p>
+        <p>No: {{aluno.codigo}}</p>
+        <p>Nota (Programação): {{notas[3]}}</p>
     </div>
 </body>
 
